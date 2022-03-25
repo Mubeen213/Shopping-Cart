@@ -12,5 +12,11 @@ public class Main {
     public static void main(String[] args) {
 	// write your code here
 
+        Item item = new Item("Coffee",2.1);
+        Item item2 = new Item(item);
+                item2.setPrice(1.1);
+        System.out.println(item);
+        System.out.println(item2);
+
     }
 }
