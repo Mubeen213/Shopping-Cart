@@ -49,11 +49,16 @@ public class Main {
             switch (response){
                 case "a":
                     System.out.print("\nChoose an aisle(row) number between: 1 – 7: ");
-                    int row = sc.nextInt()-1;
+                    int row = sc.hasNextInt() ? sc.nextInt()-1 : 404;
                     sc.nextLine();
                     System.out.print("Choose an item number between: 1 – 3: ");
-                    int col = sc.nextInt()-1;
+                    int col = sc.hasNextInt() ? sc.nextInt()-1 : 404;
                     sc.nextLine();
+                    if(row==404 || col ==404){
+                        continue;
+                    }else if(row<0 || row>6 || col<0 || col>6){
+                        continue;
+                    }
                     Item item = new Item(store.getItem(row,col));
                     if(cart.add(item)){
                         System.out.println(item.getName() + " was added to your shopping cart.");
@@ -62,18 +67,29 @@ public class Main {
                     }
                     break;
                 case "b":
+                    if(cart.isEmpty()){
+                        continue;
+                    }
                     System.out.print("Enter the item you'd like to remove: ");
                     String name = sc.nextLine();
                     cart.remove(name);
                     break;
                 case "c":
+                    if(cart.isEmpty()){
+                        continue;
+                    }
                     System.out.println(cart.checkout());
-                    break;
+                    sc.close();
+                    return;
+                default:
+                    continue;
             }
+            System.out.println("\n\nSHOPPING CART\n\n" + cart);
+            System.out.print("Enter anything to continue: ");
+            sc.nextLine();
         }
     }
     public static void loadItems(String fileName) throws FileNotFoundException {
-
         FileInputStream fis = new FileInputStream(fileName);
         Scanner sc = new Scanner(fis);
         for(int i=0 ; sc.hasNextLine(); i++){

@@ -72,9 +72,9 @@ public class ShoppingCart {
         measures[2] = measures[0] + measures[1];
 
         return "\tRECEIPT\n" +
-                "\tSubtotal: $" + measures[0] + "\n" +
-                "\tTax: $" + measures[1] + "\n" +
-                "\tTotal: $" + measures[2] + "\n";
+                "\tSubtotal: $" + String.format("%.2f",measures[0])+ "\n" +
+                "\tTax: $" + String.format("%.2f",measures[1])+ "\n" +
+                "\tTotal: $" + String.format("%.2f",measures[2]) + "\n";
     }
 
     public boolean isEmpty(){
