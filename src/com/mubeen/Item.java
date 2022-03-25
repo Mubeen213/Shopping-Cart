@@ -1,0 +1,8 @@
+package com.mubeen;
+
+public class Item {
+
+    private String name;
+    private double price;
+
+}
