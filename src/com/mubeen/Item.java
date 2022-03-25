@@ -43,7 +43,18 @@ public class Item {
     }
 
     public String toString(){
-        return "Name: " + this.name + ".\n"
-                +"Price: " + this.price + ".\n";
+        return " " + this.name + ": "+"$"+ this.price + "\n";
+    }
+
+    public boolean equals(Object obj){
+        if(obj == null){
+            return false;
+        }
+
+        if(!(obj instanceof Item)){
+            return false;
+        }
+        Item item = (Item)obj;
+        return this.name.equals(item.name) && this.price == item.price;
     }
 }
